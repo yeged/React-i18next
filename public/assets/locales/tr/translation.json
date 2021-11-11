@@ -5,5 +5,7 @@
       "part2": "Butonları kullanarak dili İngilizce ve Türkçe arasında değiştirin."
     },
     "age":" <1>{{age}}</1> yaşındasın.",
-    "ageTitle":"Yaş"
+    "ageTitle":"Yaş",
+    "messages_one": "{{count}} mesajınız var.",
+    "messages_other": "{{count}} mesajınız var."
   }

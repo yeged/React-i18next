@@ -5,5 +5,7 @@
       "part2": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter."
     },
     "age":"Du bist <1>{{age}}</1> Jahre alt.",
-    "ageTitle":"Alter"
+    "ageTitle":"Alter",
+    "messages_one": "Sie haben {{count}} Nachricht erhalten.",
+    "messages_other": "Du hast {{count}} Nachrichten. "
   }
