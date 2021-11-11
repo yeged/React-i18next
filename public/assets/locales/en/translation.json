@@ -3,5 +3,7 @@
     "description": {
       "part1": "Learning i18next package with React",
       "part2": "Switch language between english and german using buttons above."
-    }
+    },
+    "age":"You're <1>{{age}}</1>  <2>years old.</2>",
+    "ageTitle":"Age"
   }

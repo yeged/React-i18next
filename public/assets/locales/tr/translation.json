@@ -2,6 +2,8 @@
     "title": "Hoş geldin {{name}}",
     "description": {
       "part1": "React ile i18next paketi kullanımı.",
-      "part2": "Butonları kullanarak dili İngilizce ve Türkçe arasında değiştirin"
-    }
+      "part2": "Butonları kullanarak dili İngilizce ve Türkçe arasında değiştirin."
+    },
+    "age":" <1>{{age}}</1> yaşındasın.",
+    "ageTitle":"Yaş"
   }
