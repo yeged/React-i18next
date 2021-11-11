@@ -1,0 +1,7 @@
+{
+    "title": "Willkommen {{name}}",
+    "description": {
+      "part1": "i18next-Paket mit React lernen",
+      "part2": "Ändere die Sprachen zwischen deutsch und englisch mit Hilfe der beiden Schalter."
+    }
+  }

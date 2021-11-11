@@ -1,4 +1,7 @@
 {
-    "welcome_to_react": "Welcome to React and react-i18next"
-}
-
+    "title": "Welcome {{name}}",
+    "description": {
+      "part1": "Learning i18next package with React",
+      "part2": "Switch language between english and german using buttons above."
+    }
+  }

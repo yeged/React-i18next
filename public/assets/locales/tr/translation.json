@@ -1,3 +1,7 @@
 {
-    "welcome_to_react": "Reacte Hoş geldin ve react-i18next"
-}
+    "title": "Hoş geldin {{name}}",
+    "description": {
+      "part1": "React ile i18next paketi kullanımı.",
+      "part2": "Butonları kullanarak dili İngilizce ve Türkçe arasında değiştirin"
+    }
+  }
