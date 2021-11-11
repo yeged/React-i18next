@@ -1,12 +1,11 @@
 import './App.css';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = (lang: string): void => {
-    i18next.changeLanguage(lang);
+    i18n.changeLanguage(lang);
   };
   return (
     <div>
