@@ -4,8 +4,10 @@ import './index.css';
 //import App from './App';
 import i18n from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
+import LanguageDedector from 'i18next-browser-languagedetector';
 
 i18n
+  .use(LanguageDedector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     // the translations
@@ -23,10 +25,19 @@ i18n
         },
       },
     },
-    lng: document.querySelector('html')!.lang, // if you're using a language detector, do not define the lng option
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    },
+    detection: {
+      order: [
+        'htmlTag',
+        'cookie',
+        'localStorage',
+        'path',
+        'subdomain',
+      ],
+      caches: ['cookie'],
     },
   });
 function App() {
