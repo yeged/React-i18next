@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
@@ -21,8 +21,8 @@ i18n
     },
     detection: {
       order: [
-        'htmlTag',
         'cookie',
+        'htmlTag',
         'localStorage',
         'path',
         'subdomain',
@@ -32,7 +32,6 @@ i18n
     backend: {
       loadPath: '/assets/locales/{{lng}}/translation.json',
     },
-    react: { useSuspense: false },
   });
 function App() {
   const { t } = useTranslation();
@@ -41,7 +40,9 @@ function App() {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<div>Loading...</div>}>
+      <App />
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root'),
 );
