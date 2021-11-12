@@ -38,6 +38,7 @@ function App() {
   };
   return (
     <div>
+      <span className="flag-icon flag-icon-gb"></span>
       <select
         value={selectedLang}
         onChange={changeLanguage}
