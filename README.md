@@ -1,70 +1,323 @@
-# Getting Started with Create React App
+# i18next & React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Resources
 
-## Available Scripts
+- [i18n NPM](https://www.npmjs.com/package/i18n)
+- [i18next React](https://react.i18next.com/)
+  - [useTranslation Hook](https://react.i18next.com/latest/usetranslation-hook)
+  - [Trans Componenet](https://react.i18next.com/latest/trans-component)
+  - [Plurals](https://www.i18next.com/translation-function/plurals#languages-with-multiple-plurals)
+- [i18n Langauge Detector](https://github.com/i18next/i18next-browser-languageDetector)
+- [i18n HTTP Backend](https://github.com/i18next/i18next-http-backend)
+- [Js Cookie](https://github.com/js-cookie/js-cookie)
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+`npm install react-i18next i18next --save`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`npm install i18next-browser-languagedetector`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`npm install i18next-http-backend`
 
-### `npm test`
+`npm i js-cookie`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Translation JSON & use Transation & Trans Component
 
-### `npm run build`
+<table>
+<tr>
+<th>Translation JSON</th>
+</tr>
+<tr>
+ <td>
+   
+````
+{
+    "title": "Welcome {{name}}",
+    "description": {
+      "part1": "Learning i18next package with React",
+      "part2": "Switch language between english and german using buttons above."
+    },
+    "age":"You're <1>{{age}}</1>  <2>years old.</2>",
+    "ageTitle":"Age"
+  }
+````
+   
+</td>
+  
+  <table>
+<tr>
+<th>use Transation</th>
+<th>Trans Component</th>
+</tr>
+<tr>
+ <td>
+   
+````
+import { useTranslation } from 'react-i18next';
+   
+const App = () => {
+  const { t } = useTranslation();
+  return (
+    <div>
+      <h2>{t('title', { name: 'Yeged' })}</h2>
+      <p>{t('description.part1')}</p>
+    </div>
+  );
+}
+   
+````
+   
+</td>
+  
+   <td>
+   
+````
+import { Trans } from 'react-i18next';
+   
+const App = () => {
+  return (
+    <div>
+      <Trans i18nKey="description.part2" />
+      <br />
+      <Trans i18nKey="age">
+        You're
+        <strong title={t('ageTitle')}>{{ age: age }}</strong>
+        <i> years old </i>
+      </Trans>
+    </div>
+  );
+}
+   
+````
+   
+</td>
+ </table>
+ 
+### Toogle The Language
+  <table>
+<tr>
+<th>Import i18next</th>
+<th>Use Transation</th>
+</tr>
+<tr>
+ <td>
+   
+````
+import i18next from 'i18next';
+   
+const App = () => {
+  const { t } = useTranslation();
+ const changeLanguage = (lang: string): void => {
+    i18next.changeLanguage(lang);
+  };
+     
+  return (
+    <div>
+      <button onClick={() => changeLanguage('en')}>EN</button>
+      <button onClick={() => changeLanguage('tr')}>TR</button>
+      <h2>{t('title', { name: 'Yeged' })}</h2>
+      <p>{t('description.part1')}</p>
+    </div>
+  );
+}
+   
+````
+   
+</td>
+  
+   <td>
+   
+````
+import { useTranslation } from 'react-i18next';
+   
+const App = () => {
+  const { t, i18n } = useTranslation();
+     
+  const changeLanguage = (lang: string): void => {
+    i18n.changeLanguage(lang);
+  };
+     
+  return (
+    <div>
+      <button onClick={() => changeLanguage('en')}>EN</button>
+      <button onClick={() => changeLanguage('tr')}>TR</button>
+      <h2>{t('title', { name: 'Yeged' })}</h2>
+      <p>{t('description.part1')}</p>
+    </div>
+  );
+}
+   
+````
+   
+</td>
+ </table>
+  
+### Plural & Trans Component Count Prop
+  
+<table>
+<tr>
+<th>Translation JSON</th>
+<th>App.tsx</th>
+<th>Output</th>
+</tr>
+<tr>
+ <td>
+   
+````
+{
+    "messages_one": "You got {{count}} message.",
+    "messages_other": "You got {{count}} messages."
+}
+   
+````
+   
+</td>
+  
+   <td>
+   
+````
+import { Trans } from 'react-i18next';
+   
+const App = () => {
+  const messages: string[] = ['sa', 'as'];
+  return (
+    <Trans i18nKey="messages" count={messages.length}>
+      You got {{ count: messages.length }} messages.
+    </Trans>
+  );
+}
+   
+````
+   
+</td>
+   <td>
+   
+````
+// const messages = ["Hello"]
+// return You got 1 message
+     
+// const messages = ["Hello", "World"]
+// return You got 2 messages
+   
+````
+   
+</td>
+ </table>
+  
+  
+  
+### Language Detector
+  
+This is a i18next language detection plugin use to detect user language in the browser
+  
+<table>
+<tr>
+<th>Implementation</th>
+<th>Detector-Cache Opitons</th>
+<th>Options</th>
+</tr>
+<tr>
+ <td>
+   
+````
+import i18next from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+i18next.use(LanguageDetector).init({
+detection: options,
+});
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</td>
 
-### `npm run eject`
+ <td>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+detection: {
+order: [
+'path',
+'cookie',
+'htmlTag',
+'localStorage',
+'subdomain',
+],
+caches: ['cookie'],
+},
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+</td>
+   <td>
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+{
+// order and from where user language should be detected
+order: ['querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+// keys or params to lookup language from
+lookupQuerystring: 'lng',
+lookupCookie: 'i18next',
+lookupLocalStorage: 'i18nextLng',
+lookupSessionStorage: 'i18nextLng',
+lookupFromPathIndex: 0,
+lookupFromSubdomainIndex: 0,
 
-### Code Splitting
+// cache user language on
+caches: ['localStorage', 'cookie'],
+excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+// optional expire and domain for set cookie
+cookieMinutes: 10,
+cookieDomain: 'myDomain',
 
-### Analyzing the Bundle Size
+// optional htmlTag with lang attribute, the default is:
+htmlTag: document.documentElement,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+// optional set cookie options, reference:[MDN Set-Cookie docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
+cookieOptions: { path: '/', sameSite: 'strict' }
+}
 
-### Making a Progressive Web App
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+</td>
+</table>
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### HTTP Backend
 
-### Deployment
+This is a simple i18next backend to be used in Node.js, in the browser and for Deno. It will load resources from a backend server using the XMLHttpRequest or the fetch API.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
 
-### `npm run build` fails to minify
+import i18next from 'i18next';
+import HttpApi from 'i18next-http-backend';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+i18next.use(HttpApi).init({
+backend: options,
+});
+
+---
+
+backend: {
+loadPath: '/assets/locales/{{lng}}/translation.json',
+},
+
+```
+### Suspense
+
+Suspense for Data Fetching is a new feature that lets you also use <Suspense> to declaratively “wait” for anything else, including data. This page focuses on the data fetching use case, but it can also wait for images, scripts, or other asynchronous work.
+
+Prevent rendering application until translations are loaded
+
+```
+
+<Suspense fallback={<div>Loading...</div>}>
+<App />
+</Suspense>
+
+```
+
+```
