@@ -1,10 +1,13 @@
-import './App.css';
+import ReactMarkdown from 'react-markdown';
 import { Trans, useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
 import { useLanguageContext } from './context/LanguageContext';
+import SimpleMarkdown from './components/SimpleMarkdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 function App() {
-  const { t } = useTranslation('translation');
+  const { t } = useTranslation(['translation', 'markdown']);
 
   const languages = [
     {
@@ -57,6 +60,12 @@ function App() {
       <Trans i18nKey="messages" count={messages.length}>
         You got {{ count: messages.length }} messages.
       </Trans>
+      <ReactMarkdown
+        children={t('markdown:math')}
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+      />
+      <SimpleMarkdown />
     </div>
   );
 }

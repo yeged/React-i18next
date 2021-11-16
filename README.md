@@ -8,7 +8,7 @@
   - [Trans Componenet](https://react.i18next.com/latest/trans-component)
   - [Plurals](https://www.i18next.com/translation-function/plurals#languages-with-multiple-plurals)
   - [I18Next Provider](https://react.i18next.com/latest/i18nextprovider)
-  - [Create Instanca](https://www.i18next.com/overview/api#createinstance)
+  - [Create Instance](https://www.i18next.com/overview/api#createinstance)
 - [i18n Langauge Detector](https://github.com/i18next/i18next-browser-languageDetector)
 - [i18n HTTP Backend](https://github.com/i18next/i18next-http-backend)
 - [Js Cookie](https://github.com/js-cookie/js-cookie)
@@ -229,7 +229,7 @@ i18next.use(LanguageDetector).init({
 detection: options,
 });
 
-```
+````
 
 </td>
 
@@ -285,6 +285,7 @@ cookieOptions: { path: '/', sameSite: 'strict' }
 ```
 
 </td>
+ </tr>
 </table>
 
 
@@ -322,7 +323,7 @@ Prevent rendering application until translations are loaded
 
 ```
 
-```
 
 - [Babel Edit](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-react-app-with-react-i18next)
 - [Internationalization](https://lemoncode.github.io/fonk-doc/messages/internationalization)
+````
