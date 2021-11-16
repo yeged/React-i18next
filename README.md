@@ -97,33 +97,31 @@ const App = () => {
   
   
 ### Multiple Translation Files & Namespace
+  
 
 #### Markdown JSON
-
-`````
+````
 {
     "markdown": "# Hello, *world*!",
     "gfm": "# GFM\n\n## Autolink literals\n\nwww.example.com, https://example.com, and contact@example.com.\n\n## Footnote\n\nA note[^1]\n\n[^1]: Big note.\n\n## Strikethrough\n\n~one~ or ~~two~~ tildes.\n\n## Table\n\n| Alpha | Bravo |\n| - | - |\n| 中文 | Charlie |\n| 👩‍❤️‍👩 | Delta |\n\n## Tasklist\n\n* [ ] to do\n* [x] done",
     "math" : "Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following\nequation.\n\n$$\nL = \\\\frac{1}{2} \\\\rho v^2 S C_L\n$$",
     "syntax": "Here is some JavaScript code:\n\n`\n import React\n`\n\n````\nimport ReactDOM \n````\n\n~~~js\nconsole.log('It works!')\nconst x = 1;\n~~~\n\n```js\nconst x = 10;\n```"
 }
-`````
-
-```
+````
+```` 
 import { useTranslation } from 'react-i18next';
 function App() {
   const { t } = useTranslation(['translation', 'markdown']);
-
+  
   return(
   <p>{t('markdown:math')}</p>
   // or
   <p>{t('math', { ns: 'markdown' })}</p>
   )
 }
-```
-
+````
+ 
 ### Toogle The Language
-
   <table>
 <tr>
 <th>Import i18next</th>
@@ -373,7 +371,6 @@ Prevent rendering application until translations are loaded
 `npm install react-syntax-highlighter`
 
 ````
-
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -382,16 +379,14 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css'; // `rehype-katex` does not import the CSS for you
-
-```
+````
 
 ### Usage
 
-```
-
+````
 const [markdown, setMarkdown] = useState<string>(t('markdown'));
 // or
-markdown = "# Hello, _world_!"
+markdown = "# Hello, *world*!"
 
     <ReactMarkdown
         children={props.markdown}
@@ -414,11 +409,8 @@ markdown = "# Hello, _world_!"
           },
         }}
       />
-
-```
+````
 
 - [Babel Edit](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-react-app-with-react-i18next)
 - [Internationalization](https://lemoncode.github.io/fonk-doc/messages/internationalization)
 
-
-```

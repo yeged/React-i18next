@@ -5,9 +5,11 @@ import SimpleMarkdown from './components/SimpleMarkdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 function App() {
-  const { t } = useTranslation(['translation', 'markdown']);
+  const { t, i18n } = useTranslation(['translation', 'markdown']);
 
   const languages = [
     {
@@ -29,14 +31,23 @@ function App() {
   const age: number = 23;
   const messages: string[] = ['sa', 'as'];
 
-  const { language, onChangeLanguage } = useLanguageContext();
+  const [selectedLang, setSelectedLang] = useState<string>(
+    Cookies.get('i18next') || 'en',
+  );
+
+  const changeLanguage = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+  ): void => {
+    setSelectedLang(e.target.value);
+    i18n.changeLanguage(e.target.value);
+  };
 
   return (
     <div>
       <select
-        value={language}
-        onChange={onChangeLanguage}
-        onBlur={onChangeLanguage}
+        value={selectedLang}
+        onChange={changeLanguage}
+        onBlur={changeLanguage}
       >
         {languages.map(({ code, name, country_code }) => {
           return (
@@ -60,8 +71,6 @@ function App() {
       <Trans i18nKey="messages" count={messages.length}>
         You got {{ count: messages.length }} messages.
       </Trans>
-      <p>{t('markdown:math')}</p>
-      <p>{t('math', { ns: 'markdown' })}</p>
       <ReactMarkdown
         children={t('markdown:math')}
         remarkPlugins={[remarkGfm, remarkMath]}

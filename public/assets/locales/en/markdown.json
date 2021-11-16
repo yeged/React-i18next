@@ -1,6 +1,6 @@
 {
     "markdown": "# Hello, *world*!",
     "gfm": "# GFM\n\n## Autolink literals\n\nwww.example.com, https://example.com, and contact@example.com.\n\n## Footnote\n\nA note[^1]\n\n[^1]: Big note.\n\n## Strikethrough\n\n~one~ or ~~two~~ tildes.\n\n## Table\n\n| Alpha | Bravo |\n| - | - |\n| 中文 | Charlie |\n| 👩‍❤️‍👩 | Delta |\n\n## Tasklist\n\n* [ ] to do\n* [x] done",
-    "math" : "Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following\nequation.\n\n$$\nL = \\\\frac{1}{2} \\\\rho v^2 S C_L\n$$",
+    "math" : "Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following\nequation.\n\n$$\nL = \\frac{1}{2} \\rho v^2 S C_L\n$$",
     "syntax": "Here is some JavaScript code:\n\n`\n import React\n`\n\n````\nimport ReactDOM \n````\n\n~~~js\nconsole.log('It works!')\nconst x = 1;\n~~~\n\n```js\nconst x = 10;\n```"
 }
