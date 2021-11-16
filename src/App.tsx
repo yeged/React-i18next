@@ -60,6 +60,8 @@ function App() {
       <Trans i18nKey="messages" count={messages.length}>
         You got {{ count: messages.length }} messages.
       </Trans>
+      <p>{t('markdown:math')}</p>
+      <p>{t('math', { ns: 'markdown' })}</p>
       <ReactMarkdown
         children={t('markdown:math')}
         remarkPlugins={[remarkGfm, remarkMath]}
