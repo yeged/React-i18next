@@ -1,14 +1,10 @@
 import './App.css';
 import { Trans, useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
-import cookies from 'js-cookie';
+import { useLanguageContext } from './context/LanguageContext';
 
 function App() {
-  const { t, i18n } = useTranslation();
-
-  const [selectedLang, setSelectedLang] = useState<string>(
-    cookies.get('i18next') || 'en',
-  );
+  const { t } = useTranslation('translation');
 
   const languages = [
     {
@@ -30,18 +26,14 @@ function App() {
   const age: number = 23;
   const messages: string[] = ['sa', 'as'];
 
-  const changeLanguage = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ): void => {
-    setSelectedLang(e.target.value);
-    i18n.changeLanguage(e.target.value);
-  };
+  const { language, onChangeLanguage } = useLanguageContext();
+
   return (
     <div>
       <select
-        value={selectedLang}
-        onChange={changeLanguage}
-        onBlur={changeLanguage}
+        value={language}
+        onChange={onChangeLanguage}
+        onBlur={onChangeLanguage}
       >
         {languages.map(({ code, name, country_code }) => {
           return (
