@@ -10,6 +10,7 @@
   - [I18Next Provider](https://react.i18next.com/latest/i18nextprovider)
   - [Create Instance](https://www.i18next.com/overview/api#createinstance)
 - [i18n Langauge Detector](https://github.com/i18next/i18next-browser-languageDetector)
+  - [LangParam](https://github.com/i18next/react-i18next/issues/325)
 - [i18n HTTP Backend](https://github.com/i18next/i18next-http-backend)
   - [i18n Locize](https://github.com/locize/i18next-locize-backend)
 - [Js Cookie](https://github.com/js-cookie/js-cookie)
