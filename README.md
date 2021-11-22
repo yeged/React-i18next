@@ -11,6 +11,7 @@
   - [Create Instance](https://www.i18next.com/overview/api#createinstance)
 - [i18n Langauge Detector](https://github.com/i18next/i18next-browser-languageDetector)
 - [i18n HTTP Backend](https://github.com/i18next/i18next-http-backend)
+  - [i18n Locize](https://github.com/locize/i18next-locize-backend)
 - [Js Cookie](https://github.com/js-cookie/js-cookie)
 
 ## Installation
