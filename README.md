@@ -1,4 +1,4 @@
-# i18next & React
+# i18next & React --
 
 ## Resources
 
