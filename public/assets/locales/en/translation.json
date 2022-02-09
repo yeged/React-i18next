@@ -7,5 +7,6 @@
     "age":"You're <1>{{age}}</1>  <2>years old.</2>",
     "ageTitle":"Age",
     "messages_one": "You got {{count}} message.",
-    "messages_other": "You got {{count}} messages."
+    "messages_other": "You got {{count}} messages.",
+    "comment": "This is Comment"
   }
