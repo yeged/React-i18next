@@ -8,5 +8,6 @@
     "ageTitle":"Yaş",
     "messages_one": "{{count}} mesajınız var.",
     "messages_other": "{{count}} mesajınız var.",
-    "comment": "Bu bir mesaj"
+    "comment": "Bu bir mesaj",
+    "deli": "deli"
   }
