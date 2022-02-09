@@ -77,7 +77,7 @@ function App() {
       />
       <SimpleMarkdown />
       <p>Hocam yeni bir mesajınız var feat add messages</p>
-      <p>Bakalım Nolacak TESTT</p>
+      <p>Feat 2</p>
     </div>
   );
 }
