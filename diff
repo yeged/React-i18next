@@ -1,0 +1,12 @@
+diff --git a/src/components/SimpleMarkdown.tsx b/src/components/SimpleMarkdown.tsx
+index 7574358..fd708e7 100644
+--- a/src/components/SimpleMarkdown.tsx
++++ b/src/components/SimpleMarkdown.tsx
+@@ -66,6 +66,7 @@ const SimpleMarkdown = () => {
+     <div>
+       <h1>Hocam ekliyoruz feat messages</h1>
+       <h2>feat 1 </h2>
++      <h3>Feat 3 test 3 fix 3</h3>
+       <button onClick={() => setMarkdown(t('gfm'))}>
+         Plugin: remark-gfm
+       </button>
