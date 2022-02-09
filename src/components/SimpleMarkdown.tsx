@@ -64,6 +64,7 @@ const SimpleMarkdown = () => {
 
   return (
     <div>
+      <h1>Hocam ekliyoruz feat messages</h1>
       <button onClick={() => setMarkdown(t('gfm'))}>
         Plugin: remark-gfm
       </button>

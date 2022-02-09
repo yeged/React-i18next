@@ -41,7 +41,6 @@ function App() {
     setSelectedLang(e.target.value);
     i18n.changeLanguage(e.target.value);
   };
-
   return (
     <div>
       <select
@@ -77,6 +76,7 @@ function App() {
         rehypePlugins={[rehypeKatex]}
       />
       <SimpleMarkdown />
+      <p>Hocam yeni bir mesajınız var feat add messages</p>
     </div>
   );
 }
